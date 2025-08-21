@@ -26,8 +26,9 @@
 
     <script>
       // Get coordinates from localStorage
-      const lat = localStorage.getItem("latitude") || "<add-your-latitude>";
-      const lon = localStorage.getItem("longitude") || "<add-your-longitude>";
+      const coords = JSON.parse(localStorage.getItem("coords") || "{}");
+      const lat = coords.latitude || "<add-your-latitude>";
+      const lon = coords.longitude || "<add-your-longitude>";
 
       // Replace the placeholder values in the a-box element
       window.addEventListener('DOMContentLoaded', () => {

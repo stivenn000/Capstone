@@ -25,9 +25,12 @@ function getLocation() {
 function success(position) {
     x.innerHTML="Latitude: " + position.coords.latitude + 
     "<br>Longitude: " + position.coords.longitude;
-    // Save to localStorage
-    localStorage.setItem("latitude", position.coords.latitude);
-    localStorage.setItem("longitude", position.coords.longitude);
+    // Save as JSON to localStorage
+    const coords = {
+      latitude: position.coords.latitude,
+      longitude: position.coords.longitude
+    };
+    localStorage.setItem("coords", JSON.stringify(coords));
 }
 
 function error(error) {
