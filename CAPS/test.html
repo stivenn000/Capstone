@@ -14,13 +14,28 @@
       vr-mode-ui="enabled: false"
       arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
     >
-      <a-text
-        value="This content will always face you."
+      <!-- Replace a-text with a-box for a cube -->
+      <a-box
+        color="red"
+        scale="10 10 10"
         look-at="[gps-camera]"
-        scale="120 120 120"
         gps-entity-place="latitude: <add-your-latitude>; longitude: <add-your-longitude>;"
-      ></a-text>
+      ></a-box>
       <a-camera gps-camera rotation-reader> </a-camera>
     </a-scene>
+
+    <script>
+      // Get coordinates from localStorage
+      const lat = localStorage.getItem("latitude") || "<add-your-latitude>";
+      const lon = localStorage.getItem("longitude") || "<add-your-longitude>";
+
+      // Replace the placeholder values in the a-box element
+      window.addEventListener('DOMContentLoaded', () => {
+        const aBox = document.querySelector('a-box');
+        if (aBox) {
+          aBox.setAttribute('gps-entity-place', `latitude: ${lat}; longitude: ${lon};`);
+        }
+      });
+    </script>
   </body>
 </html>
