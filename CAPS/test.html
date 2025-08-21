@@ -14,21 +14,21 @@
       vr-mode-ui="enabled: false"
       arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
     >
-      <!-- Replace a-text with a-box for a cube -->
+      <!-- Cube with default coordinates -->
       <a-box
         color="red"
         scale="10 10 10"
         look-at="[gps-camera]"
-        gps-entity-place="latitude: <add-your-latitude>; longitude: <add-your-longitude>;"
+        gps-entity-place="latitude: 15.1366615; longitude: 120.5854674;"
       ></a-box>
       <a-camera gps-camera rotation-reader> </a-camera>
     </a-scene>
 
     <script>
-      // Get coordinates from localStorage
+      // Get coordinates from localStorage (JSON)
       const coords = JSON.parse(localStorage.getItem("coords") || "{}");
-      const lat = coords.latitude || "<add-your-latitude>";
-      const lon = coords.longitude || "<add-your-longitude>";
+      const lat = coords.latitude || "15.1366615";
+      const lon = coords.longitude || "120.5854674";
 
       // Replace the placeholder values in the a-box element
       window.addEventListener('DOMContentLoaded', () => {
