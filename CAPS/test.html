@@ -14,29 +14,13 @@
       vr-mode-ui="enabled: false"
       arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
     >
-      <!-- Cube with default coordinates -->
-      <a-box
-        color="red"
-        scale="10 10 10"
+      <a-text
+        value="This content will always face you."
         look-at="[gps-camera]"
+        scale="120 120 120"
         gps-entity-place="latitude: 15.1366615; longitude: 120.5854674;"
-      ></a-box>
+      ></a-text>
       <a-camera gps-camera rotation-reader> </a-camera>
     </a-scene>
-
-    <script>
-      // Get coordinates from localStorage (JSON)
-      const coords = JSON.parse(localStorage.getItem("coords") || "{}");
-      const lat = coords.latitude || "15.1366615";
-      const lon = coords.longitude || "120.5854674";
-
-      // Replace the placeholder values in the a-box element
-      window.addEventListener('DOMContentLoaded', () => {
-        const aBox = document.querySelector('a-box');
-        if (aBox) {
-          aBox.setAttribute('gps-entity-place', `latitude: ${lat}; longitude: ${lon};`);
-        }
-      });
-    </script>
   </body>
 </html>
